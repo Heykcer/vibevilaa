@@ -9,7 +9,7 @@ export const getStatus = (req, res) => {
     message: 'Vibevilaa API server is fully operational',
     timestamp: new Date().toISOString(),
     uptime: `${process.uptime().toFixed(2)} seconds`,
-    environment: process.env.NODE_ENV || 'development'
+    environment: process.env.NODE_ENV || 'development',
   });
 };
 
@@ -24,7 +24,7 @@ export const getWelcome = (req, res) => {
     message: 'Welcome to the Vibevilaa API',
     version: '1.0.0',
     endpoints: {
-      healthCheck: '/api/status'
-    }
+      healthCheck: '/api/status',
+    },
   });
 };
