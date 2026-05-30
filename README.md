@@ -1,463 +1,341 @@
-# Vibe Villa 🎉
+# Vibe Villa 🎭
 
-A modern, full-stack web and mobile application featuring a React Native frontend with Expo and a Node.js/Express backend. Vibe Villa combines beautiful, professional design with powerful backend capabilities to deliver an exceptional user experience.
+A **mobile-first, anime avatar reality show platform** where contestants communicate only through live chats, audiences watch and react in real time, and votes decide eliminations — all powered by a high-performance, scalable real-time architecture.
 
-## Project Overview
+---
 
-**Vibe Villa** is a comprehensive platform that delivers a seamless experience across web, iOS, and Android. The project consists of:
+## 🎯 What is Vibe Villa?
 
-- **Frontend**: Modern mobile app built with Expo, React Native, and TypeScript featuring an incredibly clean design system with deep navy blue, crisp white, and vibrant fruit accents
-- **Backend**: Robust REST API built with Node.js and Express, handling business logic, data persistence, and authentication
+Vibe Villa is a live, streaming reality show application where:
 
-## Project Structure
+- 🎭 **Contestants** hide behind anime avatars and communicate only through live chat
+- 👁️ **Audiences** watch conversations live and react with emojis in real time
+- ⚡ **Voting** decides eliminations — results update instantly
+- 📱 **Everything happens live**, like a real-time stream on mobile
+
+---
+
+## 🎯 Main Goals
+
+| Goal | Description |
+|------|-------------|
+| **Real-Time Chat** | Contestants chat instantly via Socket.io |
+| **Massive Audience** | Supports thousands to millions of concurrent viewers |
+| **Fast Voting** | Live elimination votes without any delay |
+| **High Performance** | No lag during heavy traffic events |
+| **Secure Platform** | Safe login and protected user data |
+| **Mobile Optimized** | Smooth experience on mobile networks |
+
+---
+
+## 📋 Functional Requirements
+
+### Contestant Features
+- Login / Register
+- Create profile & select anime avatar
+- Join villa chat room
+- Send & receive messages in real time
+- Participate anonymously
+
+### Audience Features
+- Watch live chats
+- Send emoji reactions
+- Cast elimination votes
+- View contestant profiles
+- Receive live updates instantly
+
+### Admin Features
+- Monitor chat activity
+- Moderate toxic content
+- Manage contestants
+- Start / stop voting rounds
+- Remove abusive users
+- View analytics and reports
+
+### AI Moderation
+- Detect toxic messages
+- Filter spam content
+- Flag abusive behavior
+- Automatically mute harmful users
+
+---
+
+## ⚙️ Non-Functional Requirements
+
+| Requirement | Description |
+|-------------|-------------|
+| **Scalability** | Support millions of concurrent users |
+| **Availability** | App works 24/7 with no downtime |
+| **Low Latency** | Messages appear instantly (<100ms) |
+| **Security** | All user data encrypted and protected |
+| **Reliability** | No data loss during traffic spikes |
+| **Performance** | App stays smooth during live events |
+| **Fault Tolerance** | System recovers automatically from failures |
+| **Maintainability** | Modular, easy to update and improve |
+| **Mobile Optimization** | Low battery and low data usage |
+
+---
+
+## 🛠️ Technology Stack
+
+| Layer | Technology |
+|-------|-----------|
+| **Mobile App** | React Native + Expo |
+| **Backend API** | Express.js |
+| **Real-Time Communication** | Socket.io |
+| **Database** | PostgreSQL + Firebase |
+| **Cache & Fast Processing** | Redis |
+| **Authentication** | JWT |
+| **Hosting** | Kubernetes / Cloud |
+| **Monitoring** | Grafana + Prometheus |
+
+---
+
+## 🏗️ System Architecture
 
 ```
-vibevilaa/
-├── frontend/                   # React Native/Expo mobile app
-│   ├── src/
-│   ├── assets/
-│   ├── app.json
-│   ├── package.json
-│   ├── .env.example
-│   ├── .env
-│   ├── README.md              # Frontend-specific documentation
-│   └── ...
-├── backend/                    # Node.js/Express REST API
-│   ├── src/
-│   ├── controllers/
-│   ├── routes/
-│   ├── config/
-│   ├── package.json
-│   └── ...
-└── README.md                   # This file
+                ┌──────────────────┐
+                │ Mobile Users App │
+                │ React Native App │
+                └────────┬─────────┘
+                         │
+              Internet / WebSocket
+                         │
+         ┌───────────────┴────────────────┐
+         │                                │
+         ▼                                ▼
+ ┌─────────────────┐          ┌──────────────────┐
+ │ Express API     │          │ Socket.io Server │
+ │ Handles APIs    │          │ Handles Live Chat│
+ └────────┬────────┘          └────────┬─────────┘
+          │                             │
+          └──────────┬──────────────────┘
+                     ▼
+             ┌──────────────┐
+             │ Redis Server │
+             │ Fast Memory  │
+             └──────┬───────┘
+                    │
+                    ▼
+           ┌──────────────────┐
+           │ PostgreSQL DB    │
+           │ Permanent Storage│
+           └──────────────────┘
 ```
 
-## Tech Stack
+---
 
-### Frontend
-- Expo (~56.0.5)
-- React Native (0.85.3)
-- React (19.2.3)
-- TypeScript (~6.0.3)
-- React Native Reanimated (4.3.1)
-- ESLint & Prettier
+## ⚡ Real-Time Chat Flow
 
-### Backend
-- Node.js
-- Express.js
-- Database (configured in backend)
+```
+Contestant Sends Message
+        │
+        ▼
+Socket.io Server Receives Message
+        │
+        ▼
+Message Validation (spam check, toxicity check)
+        │
+        ▼
+Redis Receives Message (ultra-fast broadcast)
+        │
+        ▼
+Audience Instantly Receives Message
+        │
+        ▼
+Background Worker Saves to PostgreSQL
+```
 
-## Quick Start
+---
+
+## 🗳️ Live Voting Flow
+
+```
+Audience Votes
+      │
+      ▼
+Redis Counter Updates Instantly
+      │
+      ▼
+Live Results Displayed on All Devices
+      │
+      ▼
+Every Few Seconds → Data Saved to PostgreSQL
+```
+
+---
+
+## 🗄️ Database Design (Simplified)
+
+| Table | Stores |
+|-------|--------|
+| **Users** | username, password (hashed), avatar, role |
+| **Rooms** | villa room info, room status |
+| **Messages** | message text, sender, timestamp, room ID |
+| **Votes** | contestant votes, voting rounds |
+| **Reports** | flagged content, moderation logs |
+
+---
+
+## 📱 Mobile Optimization
+
+- **FlashList** for smooth live chat rendering (low memory, no lag)
+- **iOS Keychain / Android Encrypted Storage** for secure token storage
+- **Auto-reconnect** on network drop with missed message recovery
+- **WebSocket heartbeats** to maintain persistent connections
+
+---
+
+## 🔒 Security Design
+
+| Feature | Purpose |
+|---------|---------|
+| JWT Authentication | Secure login |
+| HTTPS / WSS | Encrypted communication |
+| Rate Limiting | Prevent spam voting and chat flooding |
+| AI Moderation | Auto-remove abusive messages |
+| Secure Storage | Protect tokens on device |
+| Input Validation | Prevent injection attacks |
+
+---
+
+## 📈 Scalability Design
+
+The system scales **horizontally** without major redesign:
+
+- Add more API servers
+- Add more Socket.io servers behind a load balancer
+- Add more Redis nodes in cluster mode
+- PostgreSQL read replicas for analytics
+
+---
+
+## 🔭 High Availability Strategy
+
+| Component | Backup Strategy |
+|-----------|----------------|
+| API Servers | Multiple replicas |
+| Socket Servers | Load balancing |
+| Redis | Cluster mode |
+| PostgreSQL | Replication |
+| Cloud | Auto recovery |
+
+---
+
+## 📊 Monitoring & Analytics
+
+**Tools:** Grafana + Prometheus
+
+Monitors:
+- Active users and viewers
+- Live chat traffic
+- Server health
+- Voting activity
+- Error rates
+- App performance metrics
+
+---
+
+## 🚀 Quick Start
 
 ### Prerequisites
-
-- Node.js (16+) and npm/yarn
+- Node.js (16+) and npm
 - Git
 - [Expo CLI](https://docs.expo.dev/get-started/installation/)
-- Code editor (VS Code recommended)
 
 ### Installation
 
-1. **Clone the repository**
-
-   ```bash
-   git clone https://github.com/Biswahack20/vibevilaa.git
-   cd vibevilaa
-   ```
-
-2. **Install Frontend Dependencies**
-
-   ```bash
-   cd frontend
-   npm install
-   cd ..
-   ```
-
-3. **Install Backend Dependencies**
-
-   ```bash
-   cd backend
-   npm install
-   cd ..
-   ```
-
-## Setup Instructions
-
-### Frontend Setup
-
-1. Navigate to frontend directory:
-   ```bash
-   cd frontend
-   ```
-
-2. Configure environment variables:
-   ```bash
-   cp .env.example .env
-   # Edit .env with your configuration
-   ```
-
-3. Start the development server:
-   ```bash
-   npm start
-   ```
-
-4. Choose your platform:
-   - Press `a` for Android Emulator
-   - Press `i` for iOS Simulator
-   - Press `w` for Web Browser
-   - Press `j` for Expo Go (on physical device)
-
-For detailed frontend documentation, see [frontend/README.md](frontend/README.md)
-
-### Backend Setup
-
-1. Navigate to backend directory:
-   ```bash
-   cd backend
-   ```
-
-2. Configure environment variables (if needed):
-   ```bash
-   # Follow backend-specific configuration
-   ```
-
-3. Start the development server:
-   ```bash
-   npm start
-   ```
-
-The backend API will be available at `http://localhost:3000` (or configured port)
-
-## Git Workflow Guide
-
-### For Contributors: Fork & Pull Request Workflow
-
-#### 1. Fork the Repository
-
-1. Click the "Fork" button on [GitHub](https://github.com/Biswahack20/vibevilaa)
-2. This creates your own copy of the repository under your account
-
 ```bash
-# Clone your forked repository
-git clone https://github.com/YOUR_USERNAME/vibevilaa.git
+# Clone the repository
+git clone https://github.com/Biswahack20/vibevilaa.git
 cd vibevilaa
 
-# Add the upstream repository to keep sync
-git remote add upstream https://github.com/Biswahack20/vibevilaa.git
-git remote -v  # Verify remotes
+# Install Frontend
+cd frontend && npm install && cd ..
+
+# Install Backend
+cd backend && npm install && cd ..
 ```
-
-#### 2. Create a Feature Branch
-
-Always create a separate branch for your work. Never commit directly to `main`.
-
-```bash
-# Update your local main branch
-git fetch upstream
-git checkout main
-git merge upstream/main
-
-# Create a new feature branch
-git checkout -b feature/your-feature-name
-# Or for bug fixes: git checkout -b fix/bug-name
-# Or for documentation: git checkout -b docs/doc-name
-```
-
-**Branch Naming Conventions:**
-- `feature/feature-name` - New features
-- `fix/bug-name` - Bug fixes
-- `docs/doc-name` - Documentation updates
-- `refactor/refactor-name` - Code refactoring
-- `test/test-name` - Test additions
-
-#### 3. Make Your Changes
-
-Edit and commit your changes:
-
-```bash
-# Check status
-git status
-
-# Stage individual files (NOT git add .)
-git add path/to/file1.ts
-git add path/to/file2.tsx
-git add frontend/package.json
-
-# Verify staged changes
-git status
-
-# Commit with clear message
-git commit -m "feat: add user authentication"
-```
-
-**Commit Message Format:**
-- `feat: description` - New feature
-- `fix: description` - Bug fix
-- `docs: description` - Documentation
-- `style: description` - Formatting/styling
-- `refactor: description` - Code refactoring
-- `test: description` - Tests
-- `chore: description` - Build/dependency updates
-
-#### 4. Keep Your Branch Updated
-
-```bash
-# Fetch latest changes from upstream
-git fetch upstream
-
-# Rebase your branch on top of upstream/main
-git rebase upstream/main
-
-# If conflicts occur, resolve them, then:
-git add resolved_file.ts
-git rebase --continue
-```
-
-#### 5. Push Your Changes
-
-```bash
-# Push your branch to your fork
-git push origin feature/your-feature-name
-
-# If you rebased and need force push
-git push origin feature/your-feature-name --force-with-lease
-```
-
-#### 6. Create a Pull Request
-
-1. Go to your fork on GitHub
-2. Click "Compare & pull request"
-3. Ensure the base is `Biswahack20/vibevilaa:main`
-4. Add a clear title and description
-5. Reference any related issues: `Fixes #123`
-6. Wait for review and feedback
-
-#### 7. Address Review Comments
-
-```bash
-# Make requested changes
-git add specific_file.ts
-git commit -m "refactor: address review comments"
-
-# Push updates
-git push origin feature/your-feature-name
-```
-
-#### 8. Merge
-
-Once approved, maintainers will merge your PR into main.
-
-### Essential Git Commands
-
-```bash
-# Check current branch
-git branch
-
-# List all branches (including remote)
-git branch -a
-
-# Show commit history
-git log --oneline -10
-
-# Show changes in working directory
-git diff
-
-# Show staged changes
-git diff --staged
-
-# Undo unstaged changes
-git checkout -- path/to/file
-
-# Undo staged changes
-git reset HEAD path/to/file
-
-# Amend last commit (before pushing)
-git commit --amend
-
-# View remote URL
-git remote -v
-
-# Sync fork with upstream
-git fetch upstream
-git checkout main
-git merge upstream/main
-git push origin main
-```
-
-### Important Git Guidelines
-
-⚠️ **DO NOT use `git add .`** - Always stage specific files:
-```bash
-# ✅ CORRECT
-git add frontend/src/components/MyComponent.tsx
-git add frontend/package.json
-
-# ❌ WRONG
-git add .
-```
-
-✅ **DO:**
-- Create feature branches for every change
-- Stage files individually
-- Write clear commit messages
-- Keep commits focused and atomic
-- Test before pushing
-
-❌ **DON'T:**
-- Commit directly to main
-- Use `git add .`
-- Mix unrelated changes in one commit
-- Force push to main
-- Commit sensitive data (.env files, secrets)
-
-## Running the Application
 
 ### Run Frontend
 
 ```bash
 cd frontend
 npm start
+# Press 'a' for Android, 'i' for iOS, 'w' for Web
 ```
-
-Available platforms:
-- **Android**: `npm run android`
-- **iOS**: `npm run ios`
-- **Web**: `npm run web`
 
 ### Run Backend
 
 ```bash
 cd backend
 npm start
+# API available at http://localhost:3000
 ```
-
-### Run Both (Parallel Development)
-
-Open two terminals:
-
-**Terminal 1:**
-```bash
-cd backend
-npm start
-```
-
-**Terminal 2:**
-```bash
-cd frontend
-npm start
-```
-
-### Linting & Formatting (Frontend)
-
-```bash
-cd frontend
-
-# Check for code issues
-npm run lint
-
-# Fix linting issues
-npm run lint:fix
-
-# Format code
-npm run format
-
-# Check formatting
-npm run format:check
-```
-
-## Troubleshooting
-
-### Port Already in Use
-
-If port 3000 is already in use:
-```bash
-# Linux/Mac
-lsof -i :3000
-kill -9 <PID>
-
-# Windows PowerShell
-netstat -ano | findstr :3000
-taskkill /PID <PID> /F
-```
-
-### Clear Cache and Reinstall
-
-```bash
-# Frontend
-cd frontend
-rm -rf node_modules
-npm cache clean --force
-npm install
-
-# Backend
-cd backend
-rm -rf node_modules
-npm cache clean --force
-npm install
-```
-
-### Expo Issues
-
-```bash
-# Clear Expo cache
-expo start -c
-
-# Reset Metro bundler
-expo start --clear
-```
-
-## Project Guidelines
-
-### Code Quality
-- Use TypeScript for type safety
-- Follow ESLint and Prettier rules
-- Write meaningful commit messages
-- Keep functions small and focused
-
-### File Organization
-- Group related components together
-- Use clear, descriptive file names
-- Maintain consistent folder structure
-- Add comments for complex logic
-
-### Testing
-- Test your changes locally before pushing
-- Verify builds succeed on both platforms
-- Test on physical device if possible
-- Run linting before committing
-
-## Documentation
-
-- [Frontend Documentation](frontend/README.md) - React Native/Expo specific setup and development
-- [Backend Documentation](backend/README.md) - API documentation and backend setup
-
-## Contributing
-
-Thank you for contributing to Vibe Villa! Please follow these steps:
-
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Stage files individually (`git add specific_file.ts`)
-4. Commit changes (`git commit -m "feat: add amazing feature"`)
-5. Push to branch (`git push origin feature/amazing-feature`)
-6. Open a Pull Request
-
-## Code of Conduct
-
-Be respectful and professional. We're building something great together!
-
-## License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
-
-## Support
-
-Need help? 
-- Check existing documentation
-- Review similar pull requests
-- Create an issue with clear details
-- Contact the maintainers
 
 ---
 
-Happy coding! 🚀
+## 📂 Project Structure
+
+```
+vibevilaa/
+├── frontend/        # React Native/Expo mobile app
+│   ├── src/
+│   │   ├── app/     # Screens (index.jsx, _layout.jsx)
+│   │   ├── hooks/   # useTheme, useColorScheme
+│   │   └── constants/  # theme.js
+│   ├── assets/
+│   └── README.md
+├── backend/         # Node.js/Express REST API
+│   ├── src/
+│   └── README.md
+└── README.md        # This file
+```
+
+---
+
+## 🌟 Future Expansion
+
+- 🎙️ Voice chat between contestants
+- 🤖 AI-generated episode highlights
+- 📹 Live streaming video feeds
+- 🌐 Multi-language support
+- 📊 Advanced audience analytics
+- 🎬 Recommendation engine for show discovery
+
+---
+
+## 🤝 Git Workflow (Contributors)
+
+**Always create feature branches — never commit directly to `main`.**
+
+```bash
+# Create a feature branch
+git checkout -b feature/your-feature-name
+
+# Stage files individually (NOT git add .)
+git add frontend/src/app/index.jsx
+
+# Commit with conventional message format
+git commit -m "feat: add live voting UI"
+
+# Push and open pull request
+git push origin feature/your-feature-name
+```
+
+**Commit Message Format:**
+- `feat:` — New feature
+- `fix:` — Bug fix
+- `docs:` — Documentation
+- `style:` — Formatting/styling
+- `refactor:` — Code refactoring
+
+---
+
+## 📄 License
+
+MIT License — see LICENSE file for details.
+
+---
+
+> 🎭 *Vibe Villa: Where anime avatars clash, alliances form, and only one survives the vote.* 🔴 LIVE
