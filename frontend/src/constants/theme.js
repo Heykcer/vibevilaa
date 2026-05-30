@@ -3,28 +3,34 @@
  * There are many other ways to style your app. For example, [Nativewind](https://www.nativewind.dev/), [Tamagui](https://tamagui.dev/), [unistyles](https://reactnativeunistyles.vercel.app), etc.
  */
 
-import '@/global.css';
+import '../global.css';
 
 import { Platform } from 'react-native';
 
 export const Colors = {
   light: {
-    text: '#000000',
-    background: '#ffffff',
-    backgroundElement: '#F0F0F3',
-    backgroundSelected: '#E0E1E6',
+    text: '#2C3E50', // Dark Text
+    background: '#FFFFFF', // Crisp White
+    backgroundElement: '#F5F5F5', // Light Gray
+    backgroundSelected: '#FFE66D', // Vibrant Yellow
     textSecondary: '#60646C',
+    primary: '#1A2544', // Deep Navy Blue
+    accent: '#FF6B35', // Vibrant Orange
+    teal: '#4ECDC4', // Vibrant Teal
+    yellow: '#FFE66D', // Vibrant Yellow
   },
   dark: {
-    text: '#ffffff',
-    background: '#000000',
-    backgroundElement: '#212225',
-    backgroundSelected: '#2E3135',
-    textSecondary: '#B0B4BA',
+    text: '#FFFFFF', // Crisp White
+    background: '#1A2544', // Deep Navy Blue
+    backgroundElement: '#2C3E50', // Dark Text as element bg
+    backgroundSelected: '#3E5062',
+    textSecondary: '#F5F5F5', // Light Gray
+    primary: '#1A2544', // Deep Navy Blue
+    accent: '#FF6B35', // Vibrant Orange
+    teal: '#4ECDC4', // Vibrant Teal
+    yellow: '#FFE66D', // Vibrant Yellow
   },
-} as const;
-
-export type ThemeColor = keyof typeof Colors.light & keyof typeof Colors.dark;
+};
 
 export const Fonts = Platform.select({
   ios: {
@@ -59,7 +65,7 @@ export const Spacing = {
   four: 24,
   five: 32,
   six: 64,
-} as const;
+};
 
 export const BottomTabInset = Platform.select({ ios: 50, android: 80 }) ?? 0;
 export const MaxContentWidth = 800;
