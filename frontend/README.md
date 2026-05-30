@@ -1,10 +1,10 @@
 # Vibe Villa Frontend 🎉
 
-A modern, responsive mobile and web application built with [Expo](https://expo.dev), [React Native](https://reactnative.dev), and [TypeScript](https://www.typescriptlang.org/). Vibe Villa provides a seamless cross-platform experience with beautiful UI components, smooth animations, and comprehensive theming support.
+A modern, responsive mobile and web application built with [Expo](https://expo.dev), [React Native](https://reactnative.dev), and [TypeScript](https://www.typescriptlang.org/). Vibe Villa provides a seamless, beautifully designed experience across iOS, Android, and web platforms.
 
 ## Project Description
 
-Vibe Villa Frontend is a full-featured mobile application that runs on iOS, Android, and web platforms. The project is built using Expo, enabling rapid development and deployment across multiple platforms with a single codebase. It features a modern, tab-based navigation system, custom animated components, and a flexible theming system that adapts to the user's device settings.
+Vibe Villa Frontend is a full-featured mobile application that runs on iOS, Android, and web platforms. The project is built using Expo, enabling rapid development and deployment across multiple platforms from a single codebase. It features a modern, cohesive design system with vibrant colors and smooth animations.
 
 ## Tech Stack
 
@@ -204,28 +204,68 @@ frontend/
 | `npm run format:check` | Check formatting |
 | `npm run reset-project` | Reset to a blank project template |
 
-## Design System
+---
+
+## 🎨 Design System
 
 ### Color Palette
 
 Vibe Villa features an incredibly clean, modern, and cohesive design system built on a professional color palette:
 
-| Color | Hex Code | Usage |
-|-------|----------|-------|
-| **Deep Navy Blue** | `#1A2544` | Primary background, navigation headers, prominent elements |
-| **Crisp White** | `#FFFFFF` | Content background, text contrast, clean spacing |
-| **Vibrant Fruit Accents** | `#FF6B35` (Orange), `#4ECDC4` (Teal), `#FFE66D` (Yellow) | CTAs, highlights, interactive elements |
-| **Light Gray** | `#F5F5F5` | Secondary backgrounds, card surfaces |
-| **Dark Text** | `#2C3E50` | Primary text on light backgrounds |
-| **Light Text** | `#FFFFFF` | Primary text on dark backgrounds |
+#### Primary Colors
+
+| Color | Hex Code | Preview |
+|-------|----------|---------|
+| **Deep Navy Blue** | `#1A2544` | <img src="https://img.shields.io/badge/Color-1A2544?style=flat&logo=&logoColor=white&label=%20&color=1A2544" alt="Deep Navy Blue" /> |
+| **Crisp White** | `#FFFFFF` | <img src="https://img.shields.io/badge/Color-FFFFFF?style=flat&logo=&logoColor=white&label=%20&color=FFFFFF&labelColor=1A2544" alt="Crisp White" /> |
+
+#### Accent Colors
+
+| Color | Hex Code | Preview |
+|-------|----------|---------|
+| **Vibrant Orange** | `#FF6B35` | <img src="https://img.shields.io/badge/Color-FF6B35?style=flat&logo=&logoColor=white&label=%20&color=FF6B35" alt="Vibrant Orange" /> |
+| **Vibrant Teal** | `#4ECDC4` | <img src="https://img.shields.io/badge/Color-4ECDC4?style=flat&logo=&logoColor=white&label=%20&color=4ECDC4" alt="Vibrant Teal" /> |
+| **Vibrant Yellow** | `#FFE66D` | <img src="https://img.shields.io/badge/Color-FFE66D?style=flat&logo=&logoColor=1A2544&label=%20&color=FFE66D" alt="Vibrant Yellow" /> |
+
+#### Secondary Colors
+
+| Color | Hex Code | Preview |
+|-------|----------|---------|
+| **Light Gray** | `#F5F5F5` | <img src="https://img.shields.io/badge/Color-F5F5F5?style=flat&logo=&logoColor=1A2544&label=%20&color=F5F5F5" alt="Light Gray" /> |
+| **Dark Text** | `#2C3E50` | <img src="https://img.shields.io/badge/Color-2C3E50?style=flat&logo=&logoColor=white&label=%20&color=2C3E50" alt="Dark Text" /> |
+
+---
 
 ### Design Principles
 
-- **Professional & Trustworthy**: Deep navy creates authority and credibility
-- **Clean & Minimal**: Crisp white provides breathing room and clarity
-- **Modern & Vibrant**: Fruit accent colors inject energy and personality
-- **Accessible**: High contrast ratios ensure readability for all users
-- **Cohesive**: Consistent color usage across all components and screens
+- **Professional & Trustworthy** 🏛️: Deep navy creates authority and credibility
+- **Clean & Minimal** ✨: Crisp white provides breathing room and clarity
+- **Modern & Vibrant** 🎯: Fruit accent colors inject energy and personality
+- **Accessible** ♿: High contrast ratios ensure readability for all users
+- **Cohesive** 🎨: Consistent color usage across all components and screens
+
+---
+
+### Visual Design Preview
+
+<div style="background-color: #1A2544; padding: 24px; border-radius: 8px; margin: 20px 0;">
+  <div style="background-color: #FFFFFF; padding: 20px; border-radius: 8px; margin-bottom: 16px;">
+    <h4 style="color: #1A2544; margin-top: 0;">Deep Navy + Crisp White Card</h4>
+    <p style="color: #2C3E50; line-height: 1.6;">This showcases the primary color combination used throughout the app. The deep navy provides a professional foundation while crisp white content areas ensure excellent readability.</p>
+    
+    <div style="display: flex; gap: 8px; margin-top: 16px; flex-wrap: wrap;">
+      <div style="background-color: #FF6B35; padding: 12px 16px; border-radius: 6px; color: white; font-weight: 600;">Orange CTA</div>
+      <div style="background-color: #4ECDC4; padding: 12px 16px; border-radius: 6px; color: white; font-weight: 600;">Teal CTA</div>
+      <div style="background-color: #FFE66D; padding: 12px 16px; border-radius: 6px; color: #1A2544; font-weight: 600;">Yellow CTA</div>
+    </div>
+  </div>
+  
+  <div style="background-color: #F5F5F5; padding: 16px; border-radius: 8px;">
+    <p style="color: #2C3E50; margin: 0; font-size: 14px;">Light gray secondary background for supporting content and card surfaces</p>
+  </div>
+</div>
+
+---
 
 ### Component Design Template
 
@@ -392,6 +432,8 @@ export default BlankComponent;
 />
 ```
 
+---
+
 ### Design Guidelines for New Components
 
 When creating new components, follow these principles:
@@ -403,6 +445,8 @@ When creating new components, follow these principles:
 5. **Rounded Corners**: Use 8-12px border radius for a modern, polished look
 6. **Interactive States**: Provide visual feedback on touch/hover with opacity or scale changes
 
+---
+
 ## Styling & Theming
 
 The app uses a theming system that automatically adapts to the device's color scheme preferences. Components are themed using:
@@ -413,6 +457,8 @@ The app uses a theming system that automatically adapts to the device's color sc
 - **Dynamic color schemes** supporting light and dark modes
 - **Color system** ensuring professional appearance with deep navy, crisp white, and vibrant accent colors
 
+---
+
 ## Learn More
 
 - [Expo Documentation](https://docs.expo.dev/)
@@ -421,8 +467,8 @@ The app uses a theming system that automatically adapts to the device's color sc
 - [Expo Router Guide](https://docs.expo.dev/router/introduction/)
 - [React Native Reanimated](https://docs.swmansion.com/react-native-reanimated/)
 
+---
+
 ## License
 
 This project is part of Vibe Villa. See LICENSE file for details.
-
-
