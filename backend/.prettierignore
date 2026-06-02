@@ -1,0 +1,19 @@
+# Dependencies
+node_modules/
+package-lock.json
+
+# Environment variables
+.env
+.env.*
+
+# Logs
+logs/
+*.log
+
+# Caches
+.eslintcache
+.npm/
+
+# Build outputs (if any)
+dist/
+build/

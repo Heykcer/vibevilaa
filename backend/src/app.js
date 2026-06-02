@@ -13,11 +13,13 @@ app.use(helmet());
 
 // 2. Cross-Origin Resource Sharing (CORS) Middleware
 // Enabled for standard web and expo-cli client endpoints
-app.use(cors({
-  origin: '*', // Set specific domain origins if preferred in production
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization']
-}));
+app.use(
+  cors({
+    origin: '*', // Set specific domain origins if preferred in production
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+  })
+);
 
 // 3. Request Logging Middleware
 if (process.env.NODE_ENV === 'development') {
