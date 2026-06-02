@@ -8,27 +8,27 @@ A **mobile-first anime avatar reality show app** built with [Expo](https://expo.
 
 The frontend is the face of the Vibe Villa platform:
 
-| User Type | What They Do |
-|-----------|-------------|
+| User Type       | What They Do                                                             |
+| --------------- | ------------------------------------------------------------------------ |
 | **Contestants** | Log in, pick an anime avatar, join the villa chat room, chat anonymously |
-| **Audience** | Watch live conversations, send emoji reactions, cast eviction votes |
-| **Admins** | Moderate content, manage contestants, trigger voting rounds |
+| **Audience**    | Watch live conversations, send emoji reactions, cast eviction votes      |
+| **Admins**      | Moderate content, manage contestants, trigger voting rounds              |
 
 ---
 
 ## 🛠️ Tech Stack
 
-| Technology | Version | Purpose |
-|-----------|---------|---------|
-| [Expo](https://expo.dev) | ~56.0.5 | Cross-platform runtime |
-| [React Native](https://reactnative.dev) | 0.85.3 | Mobile UI framework |
-| [React](https://react.dev) | 19.2.3 | Component rendering |
-| [TypeScript](https://typescriptlang.org) | ~6.0.3 | Type safety |
-| [Expo Router](https://docs.expo.dev/router/introduction/) | ~56.2.7 | File-based routing |
-| [React Native Reanimated](https://docs.swmansion.com/react-native-reanimated/) | 4.3.1 | Smooth animations |
-| [Socket.io Client](https://socket.io) | — | Real-time chat & voting |
-| [Safe Area Context](https://github.com/th3rdwave/react-native-safe-area-context) | ~5.7.0 | Device-safe layouts |
-| ESLint + Prettier | — | Code quality & formatting |
+| Technology                                                                       | Version | Purpose                   |
+| -------------------------------------------------------------------------------- | ------- | ------------------------- |
+| [Expo](https://expo.dev)                                                         | ~56.0.5 | Cross-platform runtime    |
+| [React Native](https://reactnative.dev)                                          | 0.85.3  | Mobile UI framework       |
+| [React](https://react.dev)                                                       | 19.2.3  | Component rendering       |
+| [TypeScript](https://typescriptlang.org)                                         | ~6.0.3  | Type safety               |
+| [Expo Router](https://docs.expo.dev/router/introduction/)                        | ~56.2.7 | File-based routing        |
+| [React Native Reanimated](https://docs.swmansion.com/react-native-reanimated/)   | 4.3.1   | Smooth animations         |
+| [Socket.io Client](https://socket.io)                                            | —       | Real-time chat & voting   |
+| [Safe Area Context](https://github.com/th3rdwave/react-native-safe-area-context) | ~5.7.0  | Device-safe layouts       |
+| ESLint + Prettier                                                                | —       | Code quality & formatting |
 
 ---
 
@@ -49,15 +49,15 @@ Built on the **Vibe Villa Design System** defined in the project README:
 
 ### Color Palette
 
-| Color | Hex | Role |
-|-------|-----|------|
+| Color              | Hex       | Role                                          |
+| ------------------ | --------- | --------------------------------------------- |
 | **Deep Navy Blue** | `#1A2544` | Primary background (dark mode), hero overlays |
-| **Crisp White** | `#FFFFFF` | Text, light mode background |
-| **Vibrant Orange** | `#FF6B35` | Accent — CTAs, live badges, vote buttons |
-| **Vibrant Teal** | `#4ECDC4` | Secondary accent — vote bar fill |
-| **Vibrant Yellow** | `#FFE66D` | Tertiary accent — vote bar fill |
-| **Light Gray** | `#F5F5F5` | Cards, element backgrounds (light mode) |
-| **Dark Text** | `#2C3E50` | Body text, card backgrounds (dark mode) |
+| **Crisp White**    | `#FFFFFF` | Text, light mode background                   |
+| **Vibrant Orange** | `#FF6B35` | Accent — CTAs, live badges, vote buttons      |
+| **Vibrant Teal**   | `#4ECDC4` | Secondary accent — vote bar fill              |
+| **Vibrant Yellow** | `#FFE66D` | Tertiary accent — vote bar fill               |
+| **Light Gray**     | `#F5F5F5` | Cards, element backgrounds (light mode)       |
+| **Dark Text**      | `#2C3E50` | Body text, card backgrounds (dark mode)       |
 
 ### Theme Tokens (via `src/constants/theme.js`)
 
@@ -146,13 +146,13 @@ All viewers see update simultaneously
 
 ## 📱 Mobile Optimization
 
-| Strategy | Implementation |
-|----------|---------------|
-| **Smooth Scrolling** | `FlatList` / `FlashList` for live chat rendering |
-| **Keyboard Handling** | `KeyboardAvoidingView` with platform-aware behavior |
-| **Secure Token Storage** | iOS Keychain / Android Encrypted Storage |
-| **Network Recovery** | Auto-reconnect WebSocket on disconnect |
-| **Low Memory Usage** | Windowed list rendering for thousands of messages |
+| Strategy                 | Implementation                                      |
+| ------------------------ | --------------------------------------------------- |
+| **Smooth Scrolling**     | `FlatList` / `FlashList` for live chat rendering    |
+| **Keyboard Handling**    | `KeyboardAvoidingView` with platform-aware behavior |
+| **Secure Token Storage** | iOS Keychain / Android Encrypted Storage            |
+| **Network Recovery**     | Auto-reconnect WebSocket on disconnect              |
+| **Low Memory Usage**     | Windowed list rendering for thousands of messages   |
 
 ---
 
@@ -169,6 +169,7 @@ All viewers see update simultaneously
 ## 🚀 Getting Started
 
 ### Prerequisites
+
 - Node.js 16+ and npm
 - [Expo CLI](https://docs.expo.dev/get-started/installation/)
 - Android Emulator, iOS Simulator, or [Expo Go](https://expo.dev/go)
@@ -197,17 +198,17 @@ cp .env.example .env
 
 ## 📜 Available Scripts
 
-| Command | Description |
-|---------|-------------|
-| `npm start` | Start Expo development server |
-| `npm run android` | Run on Android emulator |
-| `npm run ios` | Run on iOS simulator |
-| `npm run web` | Run in web browser |
-| `npm run lint` | Check code quality (ESLint) |
-| `npm run lint:fix` | Auto-fix lint issues |
-| `npm run format` | Format all files (Prettier) |
-| `npm run format:check` | Check formatting without changes |
-| `npm run reset-project` | Reset to blank template |
+| Command                 | Description                      |
+| ----------------------- | -------------------------------- |
+| `npm start`             | Start Expo development server    |
+| `npm run android`       | Run on Android emulator          |
+| `npm run ios`           | Run on iOS simulator             |
+| `npm run web`           | Run in web browser               |
+| `npm run lint`          | Check code quality (ESLint)      |
+| `npm run lint:fix`      | Auto-fix lint issues             |
+| `npm run format`        | Format all files (Prettier)      |
+| `npm run format:check`  | Check formatting without changes |
+| `npm run reset-project` | Reset to blank template          |
 
 ---
 
@@ -260,4 +261,4 @@ Part of the Vibe Villa platform. See LICENSE file for details.
 
 ---
 
-> 🎭 *The villa is watching. The audience is voting. Who survives tonight?* 🔴 LIVE
+> 🎭 _The villa is watching. The audience is voting. Who survives tonight?_ 🔴 LIVE
