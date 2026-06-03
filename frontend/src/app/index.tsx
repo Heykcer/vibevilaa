@@ -17,7 +17,7 @@ import {
   StatusBar,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { useTheme } from '../hooks/use-theme';
+import { useTheme, useThemeContext } from '../hooks/use-theme';
 import { Fonts, Spacing } from '../constants/theme';
 import { io } from 'socket.io-client';
 
@@ -506,6 +506,8 @@ const FloatingEmojiItem = ({ emoji, left }: { emoji: string; left: number }) => 
 
 export default function App() {
   const theme = useTheme();
+  const themeCtx = useThemeContext();
+  const isDark = themeCtx?.themeName === 'dark' || !themeCtx?.themeName;
   const socketRef = useRef<any>(null);
 
   // Navigation Stack: keeps track of history
@@ -1308,7 +1310,7 @@ export default function App() {
       <View
         style={[
           styles.headerContainer,
-          { borderBottomColor: '#1e1c3a', backgroundColor: '#09071a' },
+          { borderBottomColor: theme.cardBorder, backgroundColor: theme.backgroundElement },
         ]}
       >
         <View style={styles.headerLeftContainer}>
@@ -1386,6 +1388,14 @@ export default function App() {
             />
           </View>
 
+          {/* Theme toggle */}
+          <TouchableOpacity 
+            onPress={() => themeCtx?.toggleTheme?.()}
+            style={[styles.headerBellBtn, { marginRight: 8 }]}
+          >
+            <Text style={{ fontSize: 16 }}>{isDark ? '☀️' : '🌙'}</Text>
+          </TouchableOpacity>
+
           {/* Notification bell */}
           <TouchableOpacity style={styles.headerBellBtn}>
             <Text style={{ fontSize: 16 }}>🔔</Text>
@@ -1437,7 +1447,7 @@ export default function App() {
   const renderHomeView = () => {
     return (
       <ScrollView 
-        contentContainerStyle={[styles.scrollContent, { backgroundColor: '#060515' }]} 
+        contentContainerStyle={[styles.scrollContent, { backgroundColor: theme.background }]} 
         showsVerticalScrollIndicator={false}
       >
         {/* HERO SECTION WITH IMAGE */}
@@ -1544,7 +1554,7 @@ export default function App() {
           {HOME_TRENDING_SHOWS.map((show) => (
             <TouchableOpacity
               key={show.id}
-              style={styles.trendingShowCard}
+              style={[styles.trendingShowCard, { backgroundColor: theme.cardBackground, borderColor: theme.cardBorder }]}
               onPress={() => {
                 if (!isLoggedIn) {
                   setLoginModalVisible(true);
@@ -1638,7 +1648,7 @@ export default function App() {
         keyboardVerticalOffset={Platform.OS === 'ios' ? 90 : 0}
       >
         <ScrollView
-          contentContainerStyle={styles.scrollContent}
+          contentContainerStyle={[styles.scrollContent, { backgroundColor: theme.background }]}
           showsVerticalScrollIndicator={false}
         >
           {/* Mock Video Player */}
@@ -1770,7 +1780,7 @@ export default function App() {
   // VIEW 3: Vote Screen
   const renderVoteView = () => {
     return (
-      <ScrollView contentContainerStyle={styles.scrollContent} showsVerticalScrollIndicator={false}>
+      <ScrollView contentContainerStyle={[styles.scrollContent, { backgroundColor: theme.background }]} showsVerticalScrollIndicator={false}>
         <View
           style={[
             styles.voteHero,
@@ -1923,7 +1933,7 @@ export default function App() {
       .filter((c) => c.name.toLowerCase().includes(contestantSearch.toLowerCase()));
 
     return (
-      <ScrollView contentContainerStyle={styles.scrollContent} showsVerticalScrollIndicator={false}>
+      <ScrollView contentContainerStyle={[styles.scrollContent, { backgroundColor: theme.background }]} showsVerticalScrollIndicator={false}>
         {/* Title */}
         <View style={styles.sectionHeader}>
           <Text style={[styles.sectionTitle, { color: theme.text }]}>Villa Contestants</Text>
@@ -2012,7 +2022,7 @@ export default function App() {
     const isFanbaseJoined = joinedFanbases.includes(c.id);
 
     return (
-      <ScrollView contentContainerStyle={styles.scrollContent} showsVerticalScrollIndicator={false}>
+      <ScrollView contentContainerStyle={[styles.scrollContent, { backgroundColor: theme.background }]} showsVerticalScrollIndicator={false}>
         {/* Back navigation header */}
         <View style={styles.profileHeaderNavigation}>
           <TouchableOpacity onPress={goBack} style={styles.profileBackBtn}>
@@ -2225,7 +2235,7 @@ export default function App() {
   // VIEW 6: Rankings Tab
   const renderRankingsView = () => {
     return (
-      <ScrollView contentContainerStyle={styles.scrollContent} showsVerticalScrollIndicator={false}>
+      <ScrollView contentContainerStyle={[styles.scrollContent, { backgroundColor: theme.background }]} showsVerticalScrollIndicator={false}>
         <View style={styles.sectionHeader}>
           <Text style={[styles.sectionTitle, { color: theme.text }]}>Villa Leaderboards</Text>
           <Text style={{ color: theme.textMuted }}>Calculated popularity index</Text>
@@ -2295,7 +2305,7 @@ export default function App() {
   // VIEW 7: Challenges Screen
   const renderChallengesView = () => {
     return (
-      <ScrollView contentContainerStyle={styles.scrollContent} showsVerticalScrollIndicator={false}>
+      <ScrollView contentContainerStyle={[styles.scrollContent, { backgroundColor: theme.background }]} showsVerticalScrollIndicator={false}>
         <View style={styles.sectionHeader}>
           <Text style={[styles.sectionTitle, { color: theme.text }]}>Daily Challenges</Text>
           <Text style={{ color: theme.textMuted }}>
@@ -2428,7 +2438,7 @@ export default function App() {
   // VIEW 8: Community Screen
   const renderCommunityView = () => {
     return (
-      <ScrollView contentContainerStyle={styles.scrollContent} showsVerticalScrollIndicator={false}>
+      <ScrollView contentContainerStyle={[styles.scrollContent, { backgroundColor: theme.background }]} showsVerticalScrollIndicator={false}>
         {/* Section Header */}
         <View style={styles.sectionHeader}>
           <Text style={[styles.sectionTitle, { color: theme.text }]}>Vibe Community</Text>
@@ -2543,7 +2553,7 @@ export default function App() {
   // VIEW 9: Wallet Screen
   const renderWalletView = () => {
     return (
-      <ScrollView contentContainerStyle={styles.scrollContent} showsVerticalScrollIndicator={false}>
+      <ScrollView contentContainerStyle={[styles.scrollContent, { backgroundColor: theme.background }]} showsVerticalScrollIndicator={false}>
         {/* Navigation header back */}
         <View style={styles.profileHeaderNavigation}>
           <TouchableOpacity onPress={goBack} style={styles.profileBackBtn}>
@@ -2637,7 +2647,7 @@ export default function App() {
   // VIEW 10: Rewards Pass Screen
   const renderRewardsPassView = () => {
     return (
-      <ScrollView contentContainerStyle={styles.scrollContent} showsVerticalScrollIndicator={false}>
+      <ScrollView contentContainerStyle={[styles.scrollContent, { backgroundColor: theme.background }]} showsVerticalScrollIndicator={false}>
         {/* Back navigation */}
         <View style={styles.profileHeaderNavigation}>
           <TouchableOpacity onPress={goBack} style={styles.profileBackBtn}>
@@ -2738,7 +2748,7 @@ export default function App() {
   // VIEW 11: Direct Messages Inbox Screen
   const renderDMsInboxView = () => {
     return (
-      <ScrollView contentContainerStyle={styles.scrollContent} showsVerticalScrollIndicator={false}>
+      <ScrollView contentContainerStyle={[styles.scrollContent, { backgroundColor: theme.background }]} showsVerticalScrollIndicator={false}>
         {/* Navigation header back */}
         <View style={styles.profileHeaderNavigation}>
           <TouchableOpacity onPress={goBack} style={styles.profileBackBtn}>
@@ -2891,7 +2901,7 @@ export default function App() {
   // VIEW 13: Profile Screen
   const renderProfileView = () => {
     return (
-      <ScrollView contentContainerStyle={styles.scrollContent} showsVerticalScrollIndicator={false}>
+      <ScrollView contentContainerStyle={[styles.scrollContent, { backgroundColor: theme.background }]} showsVerticalScrollIndicator={false}>
         {/* User Card */}
         <View
           style={[
