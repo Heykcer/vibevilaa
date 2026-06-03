@@ -9,26 +9,42 @@ import { Platform } from 'react-native';
 
 export const Colors = {
   light: {
-    text: '#2C3E50', // Dark Text
-    background: '#FFFFFF', // Crisp White
-    backgroundElement: '#F5F5F5', // Light Gray
-    backgroundSelected: '#FFE66D', // Vibrant Yellow
-    textSecondary: '#60646C',
-    primary: '#1A2544', // Deep Navy Blue
-    accent: '#FF6B35', // Vibrant Orange
-    teal: '#4ECDC4', // Vibrant Teal
-    yellow: '#FFE66D', // Vibrant Yellow
+    text: '#1F2937',
+    background: '#F7F8FF',
+    backgroundElement: '#FFFFFF',
+    cardBackground: '#FFFFFF',
+    cardBorder: '#E6E8F0',
+    backgroundSelected: '#FDE68A',
+    textSecondary: '#6B7280',
+    textMuted: '#6B7280',
+    primary: '#4F46E5',
+    accent: '#FF6B35',
+    teal: '#4ECDC4',
+    yellow: '#F59E0B',
+    green: '#10B981',
+    danger: '#EF4444',
+    neutral: '#64748B',
+    secondary: '#7C3AED',
+    lightGray: '#E5E7EB',
   },
   dark: {
-    text: '#FFFFFF', // Crisp White
-    background: '#1A2544', // Deep Navy Blue
-    backgroundElement: '#2C3E50', // Dark Text as element bg
-    backgroundSelected: '#3E5062',
-    textSecondary: '#F5F5F5', // Light Gray
-    primary: '#1A2544', // Deep Navy Blue
-    accent: '#FF6B35', // Vibrant Orange
-    teal: '#4ECDC4', // Vibrant Teal
-    yellow: '#FFE66D', // Vibrant Yellow
+    text: '#E2E8F0',
+    background: '#050A23',
+    backgroundElement: 'rgba(15, 23, 58, 0.92)',
+    cardBackground: 'rgba(8, 28, 63, 0.96)',
+    cardBorder: 'rgba(96, 165, 250, 0.24)',
+    backgroundSelected: '#1E40AF',
+    textSecondary: '#A5B4FC',
+    textMuted: '#94A3B8',
+    primary: '#60A5FA',
+    accent: '#38BDF8',
+    teal: '#22D3EE',
+    yellow: '#FACC15',
+    green: '#34D399',
+    danger: '#FB7185',
+    neutral: '#94A3B8',
+    secondary: '#7C3AED',
+    lightGray: 'rgba(255, 255, 255, 0.08)',
   },
 };
 
@@ -60,6 +76,7 @@ export const Fonts = Platform.select({
 export const Spacing = {
   half: 2,
   one: 4,
+  oneHalf: 6,
   two: 8,
   three: 16,
   four: 24,
