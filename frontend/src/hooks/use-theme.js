@@ -1,14 +1,34 @@
-/**
- * Learn more about light and dark modes:
- * https://docs.expo.dev/guides/color-schemes/
- */
+import { createContext, useContext, useState } from 'react';
+import { useColorScheme } from 'react-native';
+import { Colors } from '../constants/theme';
 
-import { Colors } from '@/constants/theme';
-import { useColorScheme } from '@/hooks/use-color-scheme';
+export const ThemeContext = createContext(null);
+
+export const ThemeProvider = ({ children }) => {
+  const deviceTheme = useColorScheme();
+  const [themeName, setThemeName] = useState(deviceTheme === 'light' ? 'light' : 'dark');
+
+  const theme = themeName === 'light' ? Colors.light : Colors.dark;
+
+  const toggleTheme = () => {
+    setThemeName((prev) => (prev === 'light' ? 'dark' : 'light'));
+  };
+
+  return (
+    <ThemeContext.Provider value={{ theme, toggleTheme, themeName }}>
+      {children}
+    </ThemeContext.Provider>
+  );
+};
 
 export function useTheme() {
-  const scheme = useColorScheme();
-  const theme = scheme === 'unspecified' ? 'light' : scheme;
+  const context = useContext(ThemeContext);
+  if (context) {
+    return context.theme;
+  }
+  return Colors.dark;
+}
 
-  return Colors[theme];
+export function useThemeContext() {
+  return useContext(ThemeContext);
 }

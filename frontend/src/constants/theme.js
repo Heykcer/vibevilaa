@@ -3,28 +3,50 @@
  * There are many other ways to style your app. For example, [Nativewind](https://www.nativewind.dev/), [Tamagui](https://tamagui.dev/), [unistyles](https://reactnativeunistyles.vercel.app), etc.
  */
 
-import '@/global.css';
+import '../global.css';
 
 import { Platform } from 'react-native';
 
 export const Colors = {
   light: {
-    text: '#000000',
-    background: '#ffffff',
-    backgroundElement: '#F0F0F3',
-    backgroundSelected: '#E0E1E6',
-    textSecondary: '#60646C'
+    text: '#1F2937',
+    background: '#F7F8FF',
+    backgroundElement: '#FFFFFF',
+    cardBackground: '#FFFFFF',
+    cardBorder: '#E6E8F0',
+    backgroundSelected: '#FDE68A',
+    textSecondary: '#6B7280',
+    textMuted: '#6B7280',
+    primary: '#4F46E5',
+    accent: '#FF6B35',
+    teal: '#4ECDC4',
+    yellow: '#F59E0B',
+    green: '#10B981',
+    danger: '#EF4444',
+    neutral: '#64748B',
+    secondary: '#7C3AED',
+    lightGray: '#E5E7EB',
   },
   dark: {
-    text: '#ffffff',
-    background: '#000000',
-    backgroundElement: '#212225',
-    backgroundSelected: '#2E3135',
-    textSecondary: '#B0B4BA'
-  }
+    text: '#E2E8F0',
+    background: '#050A23',
+    backgroundElement: 'rgba(15, 23, 58, 0.92)',
+    cardBackground: 'rgba(8, 28, 63, 0.96)',
+    cardBorder: 'rgba(96, 165, 250, 0.24)',
+    backgroundSelected: '#1E40AF',
+    textSecondary: '#A5B4FC',
+    textMuted: '#94A3B8',
+    primary: '#60A5FA',
+    accent: '#38BDF8',
+    teal: '#22D3EE',
+    yellow: '#FACC15',
+    green: '#34D399',
+    danger: '#FB7185',
+    neutral: '#94A3B8',
+    secondary: '#7C3AED',
+    lightGray: 'rgba(255, 255, 255, 0.08)',
+  },
 };
-
-
 
 export const Fonts = Platform.select({
   ios: {
@@ -35,51 +57,32 @@ export const Fonts = Platform.select({
     /** iOS `UIFontDescriptorSystemDesignRounded` */
     rounded: 'ui-rounded',
     /** iOS `UIFontDescriptorSystemDesignMonospaced` */
-    mono: 'ui-monospace'
+    mono: 'ui-monospace',
   },
   default: {
     sans: 'normal',
     serif: 'serif',
     rounded: 'normal',
-    mono: 'monospace'
+    mono: 'monospace',
   },
   web: {
     sans: 'var(--font-display)',
     serif: 'var(--font-serif)',
     rounded: 'var(--font-rounded)',
-    mono: 'var(--font-mono)'
-  }
+    mono: 'var(--font-mono)',
+  },
 });
 
 export const Spacing = {
   half: 2,
   one: 4,
+  oneHalf: 6,
   two: 8,
   three: 16,
   four: 24,
   five: 32,
-  six: 64
+  six: 64,
 };
 
 export const BottomTabInset = Platform.select({ ios: 50, android: 80 }) ?? 0;
 export const MaxContentWidth = 800;
-
-// Premium Auth Colors
-export const AuthColors = {
-  primary: '#8B5CF6',
-  primaryLight: '#EC4899', // Used for gradients (magenta/pink)
-  background: '#0B0B14',
-  glass: 'rgba(21, 21, 37, 0.85)',
-  glassAlt: 'rgba(30, 30, 45, 0.85)',
-  glassLight: 'rgba(255, 255, 255, 0.03)',
-  textPrimary: '#FFFFFF',
-  textSecondary: '#A1A1AA',
-  error: '#EF4444',
-  errorLight: 'rgba(239, 68, 68, 0.15)',
-  success: '#10B981',
-  successLight: 'rgba(16, 185, 129, 0.15)',
-  warning: '#F59E0B',
-  warningLight: 'rgba(245, 158, 11, 0.15)',
-  shadow: 'rgba(139, 92, 246, 0.25)', // Neon glow
-  border: 'rgba(255, 255, 255, 0.08)'
-};
