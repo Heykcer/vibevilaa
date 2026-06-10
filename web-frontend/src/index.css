@@ -1,48 +1,159 @@
+/* ==========================================================================
+   Vibe Villa - Global Theme Variables
+   This file contains the foundational design tokens for the application.
+   Contributors should use these CSS variables instead of hardcoded values.
+   ========================================================================== */
+
 :root {
-  --text: #6b6375;
-  --text-h: #08060d;
-  --bg: #fff;
-  --border: #e5e4e7;
-  --code-bg: #f4f3ec;
-  --accent: #aa3bff;
-  --accent-bg: rgba(170, 59, 255, 0.1);
-  --accent-border: rgba(170, 59, 255, 0.5);
-  --social-bg: rgba(244, 243, 236, 0.5);
-  --shadow:
-    rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
+  /* 1. Color Palette - Oceanic & Earthy Luxury */
+  --color-primary: #0e7490; /* Deep Ocean Teal */
+  --color-primary-light: #06b6d4; /* Cerulean Blue */
+  --color-primary-dark: #164e63; /* Abyss Blue */
+  
+  --color-secondary: #e17055; /* Warm Coral / Terracotta */
+  --color-secondary-light: #fab1a0; /* Soft Coral */
+  --color-secondary-dark: #cc4f36; /* Deep Rust */
+  
+  /* Neutral colors for Light Mode */
+  --color-bg-base: #f8fafc; /* Sea-breeze White */
+  --color-bg-surface: #ffffff; /* Crisp White */
+  --color-bg-surface-hover: #f0f9ff; /* Soft Sky Blue */
+  --color-bg-surface-active: #e0f2fe;
+  
+  --color-text-base: #334155;
+  --color-text-heading: #0f172a;
+  --color-text-muted: #64748b;
+  
+  --color-border: #e2e8f0;
+  --color-border-hover: #cbd5e1;
+  --color-border-focus: #94a3b8;
 
-  --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --mono: ui-monospace, Consolas, monospace;
+  /* Semantic Colors */
+  --color-success: #10b981; /* Seafoam Green */
+  --color-success-bg: #d1fae5;
+  --color-error: #ef4444;
+  --color-error-bg: #fee2e2;
+  --color-warning: #f59e0b;
+  --color-warning-bg: #fef3c7;
+  --color-info: #3b82f6;
+  --color-info-bg: #dbeafe;
 
-  font: 18px/145% var(--sans);
-  letter-spacing: 0.18px;
+  /* 2. Typography - Elegant & Minimal */
+  --font-sans: 'DM Sans', system-ui, -apple-system, sans-serif;
+  --font-heading: 'Playfair Display', Georgia, serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+
+  --text-xs: 0.75rem;     /* 12px */
+  --text-sm: 0.875rem;    /* 14px */
+  --text-base: 1rem;      /* 16px */
+  --text-lg: 1.125rem;    /* 18px */
+  --text-xl: 1.25rem;     /* 20px */
+  --text-2xl: 1.5rem;     /* 24px */
+  --text-3xl: 1.875rem;   /* 30px */
+  --text-4xl: 2.25rem;    /* 36px */
+  --text-5xl: 3rem;       /* 48px */
+
+  /* 3. Spacing Scale */
+  --space-0: 0;
+  --space-1: 0.25rem;  /* 4px */
+  --space-2: 0.5rem;   /* 8px */
+  --space-3: 0.75rem;  /* 12px */
+  --space-4: 1rem;     /* 16px */
+  --space-5: 1.25rem;  /* 20px */
+  --space-6: 1.5rem;   /* 24px */
+  --space-8: 2rem;     /* 32px */
+  --space-10: 2.5rem;  /* 40px */
+  --space-12: 3rem;    /* 48px */
+  --space-16: 4rem;    /* 64px */
+
+  /* 4. Border Radius (Shapes) - Fluid & Organic */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 20px; /* Slightly softer for a water-like feel */
+  --radius-2xl: 24px;
+  --radius-full: 9999px;
+
+  /* 5. Shadows - Diffused & Cool */
+  --shadow-sm: 0 1px 2px 0 rgba(14, 116, 144, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(14, 116, 144, 0.08), 0 2px 4px -1px rgba(14, 116, 144, 0.04);
+  --shadow-lg: 0 10px 15px -3px rgba(14, 116, 144, 0.1), 0 4px 6px -2px rgba(14, 116, 144, 0.05);
+  --shadow-xl: 0 20px 25px -5px rgba(14, 116, 144, 0.1), 0 10px 10px -5px rgba(14, 116, 144, 0.04);
+  --shadow-glow: 0 0 20px rgba(6, 182, 212, 0.25);
+  --shadow-glow-secondary: 0 0 20px rgba(225, 112, 85, 0.25);
+
+  /* 6. Transitions & Animations */
+  --transition-fast: 200ms ease-out;
+  --transition-normal: 400ms ease-out;
+  --transition-slow: 700ms ease-in-out;
+  
+  /* 7. Gradients */
+  --gradient-primary: linear-gradient(135deg, var(--color-primary-light), var(--color-primary-dark));
+  --gradient-surface: linear-gradient(180deg, var(--color-bg-base), var(--color-bg-surface-hover));
+
+  /* Legacy variable mappings */
+  --text: var(--color-text-base);
+  --text-h: var(--color-text-heading);
+  --bg: var(--color-bg-base);
+  --border: var(--color-border);
+  --code-bg: var(--color-bg-surface-hover);
+  --accent: var(--color-primary);
+  --accent-bg: rgba(6, 182, 212, 0.1);
+  --accent-border: var(--color-primary-light);
+  --social-bg: var(--color-bg-surface);
+  --shadow: var(--shadow-lg);
+  --sans: var(--font-sans);
+  --heading: var(--font-heading);
+  --mono: var(--font-mono);
+
+  font: var(--text-base)/1.6 var(--font-sans);
   color-scheme: light dark;
-  color: var(--text);
-  background: var(--bg);
+  color: var(--color-text-base);
+  background: var(--color-bg-base);
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-
-  @media (max-width: 1024px) {
-    font-size: 16px;
-  }
 }
 
+/* Dark Mode Overrides */
 @media (prefers-color-scheme: dark) {
   :root {
-    --text: #9ca3af;
-    --text-h: #f3f4f6;
-    --bg: #16171d;
-    --border: #2e303a;
-    --code-bg: #1f2028;
-    --accent: #c084fc;
-    --accent-bg: rgba(192, 132, 252, 0.15);
-    --accent-border: rgba(192, 132, 252, 0.5);
-    --social-bg: rgba(47, 48, 58, 0.5);
-    --shadow:
-      rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
+    /* Neutral colors for Dark Mode */
+    --color-bg-base: #082f49; /* Deep Ocean Night */
+    --color-bg-surface: #0c4a6e; /* Ocean Depth */
+    --color-bg-surface-hover: #075985; 
+    --color-bg-surface-active: #0369a1; 
+    
+    --color-text-base: #e0f2fe; /* Soft Cyan White */
+    --color-text-heading: #ffffff; /* Pure White */
+    --color-text-muted: #bae6fd; /* Light Cyan */
+    
+    --color-border: #0369a1;
+    --color-border-hover: #0284c7;
+    --color-border-focus: #0ea5e9;
+
+    /* Semantic adjustments for Dark Mode */
+    --color-success-bg: rgba(16, 185, 129, 0.15);
+    --color-error-bg: rgba(239, 68, 68, 0.15);
+    --color-warning-bg: rgba(245, 158, 11, 0.15);
+    --color-info-bg: rgba(59, 130, 246, 0.15);
+
+    /* Glow adjustments */
+    --shadow-glow: 0 0 25px rgba(6, 182, 212, 0.4);
+    --shadow-glow-secondary: 0 0 25px rgba(225, 112, 85, 0.4);
+    
+    /* Legacy dark mode variables */
+    --text: var(--color-text-base);
+    --text-h: var(--color-text-heading);
+    --bg: var(--color-bg-base);
+    --border: var(--color-border);
+    --code-bg: var(--color-bg-surface);
+    --accent: #06b6d4;
+    --accent-bg: rgba(6, 182, 212, 0.15);
+    --accent-border: rgba(6, 182, 212, 0.5);
+    --social-bg: var(--color-bg-surface);
+    --shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.6), 0 4px 6px -2px rgba(0, 0, 0, 0.4);
   }
 
   #social .button-icon {
@@ -50,8 +161,12 @@
   }
 }
 
+/* Global Reset & Base Styles */
 body {
   margin: 0;
+  background-color: var(--color-bg-base);
+  color: var(--color-text-base);
+  font-family: var(--font-sans);
 }
 
 #root {
@@ -66,46 +181,49 @@ body {
   box-sizing: border-box;
 }
 
-h1,
-h2 {
-  font-family: var(--heading);
-  font-weight: 500;
-  color: var(--text-h);
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  color: var(--color-text-heading);
+  margin-top: 0;
 }
 
 h1 {
-  font-size: 56px;
-  letter-spacing: -1.68px;
-  margin: 32px 0;
+  font-size: var(--text-5xl);
+  letter-spacing: -0.02em;
+  margin-bottom: var(--space-8);
+  
   @media (max-width: 1024px) {
-    font-size: 36px;
-    margin: 20px 0;
+    font-size: var(--text-4xl);
+    margin-bottom: var(--space-6);
   }
-}
-h2 {
-  font-size: 24px;
-  line-height: 118%;
-  letter-spacing: -0.24px;
-  margin: 0 0 8px;
-  @media (max-width: 1024px) {
-    font-size: 20px;
-  }
-}
-p {
-  margin: 0;
 }
 
-code,
-.counter {
-  font-family: var(--mono);
+h2 {
+  font-size: var(--text-2xl);
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  margin-bottom: var(--space-2);
+  
+  @media (max-width: 1024px) {
+    font-size: var(--text-xl);
+  }
+}
+
+p {
+  margin: 0 0 var(--space-4);
+}
+
+code, .counter {
+  font-family: var(--font-mono);
   display: inline-flex;
-  border-radius: 4px;
-  color: var(--text-h);
+  border-radius: var(--radius-sm);
+  color: var(--color-text-heading);
 }
 
 code {
-  font-size: 15px;
-  line-height: 135%;
-  padding: 4px 8px;
+  font-size: var(--text-sm);
+  line-height: 1.5;
+  padding: var(--space-1) var(--space-2);
   background: var(--code-bg);
 }
