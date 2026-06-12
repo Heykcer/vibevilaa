@@ -1,17 +1,25 @@
+import { useState } from 'react';
 import './App.css'
+import LandingPage from './pages/LandingPage';
+import ErrorBoundary from './components/Common/ErrorBoundary';
+import SplashScreen from './components/Common/SplashScreen';
 
 function App() {
+  const [showSplash, setShowSplash] = useState(true);
+
   return (
-    <div className="app-container" style={{ padding: '4rem 2rem', textAlign: 'center' }}>
-      <h1>Vibe Villa - Web Dashboard</h1>
-      <p>
-        Welcome to the Vibe Villa web frontend. Start building the anime avatar reality show platform here!
-      </p>
-      <div style={{ marginTop: '2rem' }}>
-        <button className="btn-primary">Get Started</button>
-      </div>
+    <div className="app-wrapper">
+      <ErrorBoundary>
+        {showSplash ? (
+          <SplashScreen onComplete={() => setShowSplash(false)} />
+        ) : (
+          <div className="landing-fade-in">
+            <LandingPage />
+          </div>
+        )}
+      </ErrorBoundary>
     </div>
   )
 }
 
-export default App
+export default App;
