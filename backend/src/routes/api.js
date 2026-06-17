@@ -15,6 +15,7 @@ import {
   createContestant,
   moderateChannel,
 } from '../controllers/adminController.js';
+import { protect } from '../middleware/authMiddleware.js';
 
 const router = express.Router();
 
@@ -23,6 +24,7 @@ router.get('/', getWelcome);
 router.get('/status', getStatus);
 
 // 2. Auth routes
+// These are not protected because they are used to establish the token and sync the user
 router.post('/auth/register', registerUser);
 router.post('/auth/login', loginUser);
 router.post('/auth/social', socialLogin);
@@ -31,23 +33,23 @@ router.post('/auth/social', socialLogin);
 router.get('/contestants', getContestants);
 router.get('/contestants/rankings', getRankings);
 router.get('/contestants/:id', getContestantById);
-router.post('/contestants/:id/gift', sendGift);
+router.post('/contestants/:id/gift', protect, sendGift);
 
 // 4. Community & Chat routes
 router.get('/channels', getChannels);
 router.get('/channels/:channelId/messages', getChannelMessages);
-router.post('/channels/messages', sendMessage);
+router.post('/channels/messages', protect, sendMessage);
 
 // 5. Voting routes
-router.post('/votes/cast', castVote);
+router.post('/votes/cast', protect, castVote);
 
 // 6. Wallet transactions
-router.post('/wallet/purchase', purchasePackage);
-router.post('/wallet/premium', upgradePremium);
+router.post('/wallet/purchase', protect, purchasePackage);
+router.post('/wallet/premium', protect, upgradePremium);
 
-// 7. Admin endpoints
-router.post('/admin/episodes', createEpisode);
-router.post('/admin/contestants', createContestant);
-router.post('/admin/moderate', moderateChannel);
+// 7. Admin endpoints (In a real app, you'd have an 'admin' middleware too)
+router.post('/admin/episodes', protect, createEpisode);
+router.post('/admin/contestants', protect, createContestant);
+router.post('/admin/moderate', protect, moderateChannel);
 
 export default router;

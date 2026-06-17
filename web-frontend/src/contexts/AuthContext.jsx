@@ -6,6 +6,7 @@ import {
   onAuthStateChanged 
 } from 'firebase/auth';
 import { auth, googleProvider } from '../firebase';
+import { syncUserWithBackend } from '../utils/api';
 
 const AuthContext = createContext();
 
@@ -15,6 +16,7 @@ export const useAuth = () => {
 
 export const AuthProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState(null);
+  const [backendUser, setBackendUser] = useState(null);
   const [loading, setLoading] = useState(true);
 
   // Sign in with Google
@@ -29,13 +31,27 @@ export const AuthProvider = ({ children }) => {
 
   // Logout
   const logout = () => {
+    setBackendUser(null);
     return signOut(auth);
   };
 
   // Subscribe to auth state changes
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
+    const unsubscribe = onAuthStateChanged(auth, async (user) => {
       setCurrentUser(user);
+      
+      if (user) {
+        try {
+          // Once Firebase logs the user in, sync with our backend
+          const response = await syncUserWithBackend();
+          setBackendUser(response.data);
+        } catch (error) {
+          console.error("Error syncing user with backend:", error);
+        }
+      } else {
+        setBackendUser(null);
+      }
+
       setLoading(false);
     });
 
@@ -44,6 +60,7 @@ export const AuthProvider = ({ children }) => {
 
   const value = {
     currentUser,
+    backendUser,
     signInWithGoogle,
     loginWithEmail,
     logout
