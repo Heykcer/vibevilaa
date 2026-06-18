@@ -77,8 +77,10 @@ section {
   top: 0;
   z-index: 50;
   width: 100%;
-  background: transparent; /* Fully transparent overlay */
-  border-bottom: none;
+  background: rgba(10, 15, 30, 0.6); /* Dark oceanic glass overlay */
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
   display: flex;
   justify-content: center;
 }
@@ -105,13 +107,12 @@ section {
   height: 44px;
   width: auto;
   object-fit: contain;
-  /* Magically crop out the black square background by blending it into the dark navbar */
-  mix-blend-mode: screen;
+  filter: drop-shadow(0 0 10px rgba(6, 182, 212, 0.5));
   transition: all 0.3s ease;
 }
 .nav-logo:hover {
   transform: scale(1.05);
-  filter: brightness(1.3);
+  filter: brightness(1.3) drop-shadow(0 0 15px rgba(6, 182, 212, 0.8));
 }
 .nav-links {
   display: flex;
@@ -498,8 +499,8 @@ section {
   left: 0;
   width: 100vw;
   height: 100vh;
-  /* Use the exact same background image so it perfectly aligns with the app */
-  background: url('/hero-bg.png') no-repeat center center fixed;
+  /* Use a dark gradient overlay over the background image to make the logo pop */
+  background: linear-gradient(rgba(10, 15, 30, 0.7), rgba(10, 15, 30, 0.8)), url('/hero-bg.png') no-repeat center center fixed;
   background-size: cover;
   z-index: 9999;
   display: flex;
@@ -521,10 +522,7 @@ section {
 .splash-logo {
   width: 160px;
   height: auto;
-  /* Crop out the black square background */
-  mix-blend-mode: screen;
-  /* A slight brightness boost to make it pop */
-  filter: brightness(1.2);
+  filter: drop-shadow(0 0 25px rgba(6, 182, 212, 0.6));
 }
 .splash-title {
   font-family: var(--font-heading);
