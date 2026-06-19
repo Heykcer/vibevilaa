@@ -1,15 +1,16 @@
 import { initializeApp } from 'firebase/app';
 import { getAuth, GoogleAuthProvider } from 'firebase/auth';
 import { getAnalytics } from 'firebase/analytics';
+import { env } from './config/env.js';
 
 const firebaseConfig = {
-  apiKey: "AIzaSyD-u2rl4AP9yFZw86uEt0X0SmpiQcl16wQ",
-  authDomain: "vibevilaa.firebaseapp.com",
-  projectId: "vibevilaa",
-  storageBucket: "vibevilaa.firebasestorage.app",
-  messagingSenderId: "338044474798",
-  appId: "1:338044474798:web:b4afa22f514ecd629fe43f",
-  measurementId: "G-ZVF8Y8K8C1"
+  apiKey: env.VITE_FIREBASE_API_KEY,
+  authDomain: env.VITE_FIREBASE_AUTH_DOMAIN,
+  projectId: env.VITE_FIREBASE_PROJECT_ID,
+  storageBucket: env.VITE_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+  appId: env.VITE_FIREBASE_APP_ID,
+  measurementId: env.VITE_FIREBASE_MEASUREMENT_ID
 };
 
 // Initialize Firebase

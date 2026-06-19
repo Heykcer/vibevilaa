@@ -20,6 +20,9 @@ This document outlines the core development rules, aesthetic guidelines, and pro
 - Structured the `src/components/` directory into `Common`, `Layout`, and `Sections`.
 - Implemented global App-level Error Handling that suppresses browser crashes and fails silently.
 
+### Security & Infrastructure
+- Implemented robust Environment Variable validation using Zod in both the frontend (`web-frontend/src/config/env.js`) and backend (`backend/src/config/env.js`) to guarantee secure, strongly-typed startup configurations.
+
 ### UI & Aesthetics
 - Created a highly dynamic Landing Page featuring:
   - Full viewport background image (`hero-bg.png`).

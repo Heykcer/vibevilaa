@@ -7,7 +7,7 @@ export const loginUser = async (req, res, next) => {
     if (req.headers.authorization && req.headers.authorization.startsWith('Bearer')) {
       token = req.headers.authorization.split(' ')[1];
     }
-    
+
     if (!token) {
       res.status(401);
       throw new Error('No token provided');
@@ -50,4 +50,3 @@ export const loginUser = async (req, res, next) => {
 // Kept for backwards compatibility or specific social flows if needed
 export const socialLogin = loginUser;
 export const registerUser = loginUser;
-

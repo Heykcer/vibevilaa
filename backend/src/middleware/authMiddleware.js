@@ -16,10 +16,10 @@ export const protect = async (req, res, next) => {
   try {
     // Verify token with Firebase Admin
     const decodedToken = await adminAuth.verifyIdToken(token);
-    
+
     // Find the user in our database based on the firebase email
     const user = await User.findOne({ email: decodedToken.email });
-    
+
     if (!user) {
       res.status(401);
       return next(new Error('User not found in the database'));
@@ -28,7 +28,7 @@ export const protect = async (req, res, next) => {
     // Attach user to request object
     req.user = user;
     req.firebaseUser = decodedToken;
-    
+
     next();
   } catch (error) {
     console.error('Auth Middleware Error:', error);
@@ -36,4 +36,3 @@ export const protect = async (req, res, next) => {
     next(new Error('Not authorized, token failed'));
   }
 };
-

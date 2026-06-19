@@ -1,4 +1,5 @@
 import mongoose from 'mongoose';
+import { env } from './env.js';
 
 /**
  * Establishes connection to MongoDB database using Mongoose.
@@ -8,7 +9,7 @@ import mongoose from 'mongoose';
 const connectDB = async () => {
   try {
     const conn = await mongoose.connect(
-      process.env.MONGO_URI || 'mongodb://localhost:27017/vibevilaa'
+      env.MONGO_URI || 'mongodb://localhost:27017/vibevilaa'
     );
     console.log(`📡 MongoDB Connected: ${conn.connection.host}`);
   } catch (error) {

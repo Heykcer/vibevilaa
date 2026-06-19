@@ -1,21 +1,18 @@
-import dotenv from 'dotenv';
 import { Server } from 'socket.io';
 import app from './app.js';
 import connectDB from './config/db.js';
-
-// Load environment variables from .env
-dotenv.config();
+import { env } from './config/env.js';
 
 // Connect to MongoDB
 connectDB();
 
 // Determine Port
-const PORT = process.env.PORT || 5000;
+const PORT = env.PORT;
 
 // Start Server Listening
 const server = app.listen(PORT, () => {
   console.log(
-    `🚀 Server running in ${process.env.NODE_ENV || 'development'} mode on http://localhost:${PORT}`
+    `🚀 Server running in ${env.NODE_ENV} mode on http://localhost:${PORT}`
   );
 });
 
