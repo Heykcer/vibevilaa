@@ -8,9 +8,7 @@ import { env } from './env.js';
  */
 const connectDB = async () => {
   try {
-    const conn = await mongoose.connect(
-      env.MONGO_URI || 'mongodb://localhost:27017/vibevilaa'
-    );
+    const conn = await mongoose.connect(env.MONGO_URI || 'mongodb://localhost:27017/vibevilaa');
     console.log(`📡 MongoDB Connected: ${conn.connection.host}`);
   } catch (error) {
     console.warn(`⚠️ MongoDB Connection Warning: ${error.message}`);

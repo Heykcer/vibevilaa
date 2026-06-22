@@ -11,9 +11,7 @@ const PORT = env.PORT;
 
 // Start Server Listening
 const server = app.listen(PORT, () => {
-  console.log(
-    `🚀 Server running in ${env.NODE_ENV} mode on http://localhost:${PORT}`
-  );
+  console.log(`🚀 Server running in ${env.NODE_ENV} mode on http://localhost:${PORT}`);
 });
 
 // Initialize Socket.io Server

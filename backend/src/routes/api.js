@@ -7,7 +7,12 @@ import {
   getRankings,
   sendGift,
 } from '../controllers/contestantController.js';
-import { getChannels, getChannelMessages, sendMessage } from '../controllers/chatController.js';
+import {
+  getChannels,
+  getChannelMessages,
+  sendMessage,
+  createChannel,
+} from '../controllers/chatController.js';
 import { castVote } from '../controllers/voteController.js';
 import { purchasePackage, upgradePremium } from '../controllers/walletController.js';
 import {
@@ -37,8 +42,9 @@ router.post('/contestants/:id/gift', protect, sendGift);
 
 // 4. Community & Chat routes
 router.get('/channels', getChannels);
+router.post('/channels', createChannel);
 router.get('/channels/:channelId/messages', getChannelMessages);
-router.post('/channels/messages', protect, sendMessage);
+router.post('/channels/messages', sendMessage);
 
 // 5. Voting routes
 router.post('/votes/cast', protect, castVote);

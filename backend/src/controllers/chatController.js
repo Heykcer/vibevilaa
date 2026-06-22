@@ -48,3 +48,25 @@ export const sendMessage = async (req, res, next) => {
     next(error);
   }
 };
+
+export const createChannel = async (req, res, next) => {
+  try {
+    const { name, description } = req.body;
+    if (!name) {
+      res.status(400);
+      throw new Error('Please provide a channel name');
+    }
+
+    const channel = await Channel.create({
+      name,
+      description: description || 'A new villa room',
+    });
+
+    res.status(201).json({
+      success: true,
+      data: channel,
+    });
+  } catch (error) {
+    next(error);
+  }
+};

@@ -11,9 +11,7 @@ const noPlaceholder = (val) => {
 };
 
 const envSchema = z.object({
-  NODE_ENV: z
-    .enum(['development', 'production', 'test'])
-    .default('development'),
+  NODE_ENV: z.enum(['development', 'production', 'test']).default('development'),
   PORT: z
     .string({ required_error: 'PORT environment variable is missing' })
     .transform((val) => parseInt(val, 10))
@@ -23,7 +21,9 @@ const envSchema = z.object({
   MONGO_URI: z
     .string({ required_error: 'MONGO_URI environment variable is missing' })
     .url({ message: 'MONGO_URI must be a valid connection string' })
-    .refine(noPlaceholder, { message: "MONGO_URI must not be a template placeholder (e.g. 'your_mongo_uri')" }),
+    .refine(noPlaceholder, {
+      message: "MONGO_URI must not be a template placeholder (e.g. 'your_mongo_uri')",
+    }),
 });
 
 // Validate the process.env object

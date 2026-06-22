@@ -35,6 +35,12 @@ This document outlines the core development rules, aesthetic guidelines, and pro
 - Established `Agents.md` to formally track working rules, aesthetic guidelines, and project progress.
 - Defined AI Agent Protocol for continuous self-documentation updates upon task completion.
 
+### Real-Time Chat & Community
+- Implemented real-time "Villa Chat Rooms" powered by Socket.IO on both backend and frontend.
+- Created `POST /channels` backend route to allow dynamic room creation.
+- Built a visually stunning `VillaRoomsPage` (Room Listing & Creation Modal) featuring deep glassmorphism and glowing oceanic borders.
+- Developed `ChatRoomPage` for real-time messaging, seamlessly syncing historical messages with instant live-chat broadcasts.
+
 ---
 
 > **Note to Agents:** Whenever you complete a new feature or major task, you must explicitly ask the user: *"Should we update Agents.md with these new changes?"*
