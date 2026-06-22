@@ -22,6 +22,7 @@ This document outlines the core development rules, aesthetic guidelines, and pro
 
 ### Security & Infrastructure
 - Implemented robust Environment Variable validation using Zod in both the frontend (`web-frontend/src/config/env.js`) and backend (`backend/src/config/env.js`) to guarantee secure, strongly-typed startup configurations.
+- Stabilized frontend dependency ecosystem by resolving ESLint peer dependency conflicts (v9.21.0) and heavily customizing ESLint configuration to support Vite + React globals, suppressing overly strict custom rules to maintain developer velocity.
 
 ### UI & Aesthetics
 - Created a highly dynamic Landing Page featuring:
