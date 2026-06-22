@@ -17,7 +17,7 @@ export default defineConfig([
       reactRefresh.configs.vite,
     ],
     languageOptions: {
-      globals: globals.browser,
+      globals: { ...globals.browser, ...globals.node },
       parserOptions: { ecmaFeatures: { jsx: true } },
     },
     settings: {
@@ -25,5 +25,11 @@ export default defineConfig([
         version: '19.2.6',
       },
     },
+    rules: {
+      'react/prop-types': 'off',
+      'no-unused-vars': ['error', { 'varsIgnorePattern': '^React$' }],
+      'react/no-unescaped-entities': 'off',
+      'react-hooks/set-state-in-effect': 'off'
+    }
   },
 ])

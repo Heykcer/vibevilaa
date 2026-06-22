@@ -15,7 +15,7 @@ export const loginUser = async (req, res, next) => {
 
     // Verify token with Firebase Admin
     const decodedToken = await adminAuth.verifyIdToken(token);
-    const { email, name, picture } = decodedToken;
+    const { email, name } = decodedToken;
 
     // Find or create user
     let user = await User.findOne({ email });
